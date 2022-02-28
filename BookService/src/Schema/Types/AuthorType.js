@@ -1,6 +1,7 @@
 import {GraphQLObjectType,GraphQLString,GraphQLID,GraphQLInt,GraphQLList} from "graphql";
 import BookType from "./BookType.js";
-import {books} from "../Data/index.js";
+//import {books} from "../Data/index.js";
+import {Book,Author} from "../../Models/index.js";
 
 
 export default new GraphQLObjectType({
@@ -11,7 +12,9 @@ export default new GraphQLObjectType({
         age:{type:GraphQLInt},
         books:{
             type:new GraphQLList(BookType),
-            resolve:(parent)=>books.filter(book=>book.authorId===parent.id),
+            resolve:(author)=>{
+                return Book.find({authorId:author.id});
+            },
         },
     }),
 });

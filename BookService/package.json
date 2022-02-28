@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --experimental-json-modules src/index.js"
+    "start": "nodemon --experimental-json-modules src/index.js",
+    "database": "mongod -f /opt/homebrew/etc/mongod.conf"
   },
   "author": "Ahmed Ayachi",
   "license": "ISC",
@@ -16,5 +17,8 @@
     "express-graphql": "^0.12.0",
     "graphql": "^15.8.0",
     "mongoose": "^6.2.3"
+  },
+  "exports":{
+    "./models":"./src/Models/index.js"
   }
 }

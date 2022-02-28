@@ -1,6 +1,7 @@
 import {GraphQLObjectType,GraphQLString,GraphQLID} from "graphql";
 import AuthorType from "./AuthorType.js";
-import {authors} from "../Data/index.js";
+//import {authors} from "../Data/index.js";
+import {Book,Author} from "../../Models/index.js";
 
 
 export default new GraphQLObjectType({
@@ -11,7 +12,9 @@ export default new GraphQLObjectType({
         genre:{type:GraphQLString},
         author:{
             type:AuthorType,
-            resolve:(book)=>authors.find(author=>author.id===book.authorId),
+            resolve:(book)=>{
+                return Author.findById(book.authorId);
+            },
         },
     }),
 });
