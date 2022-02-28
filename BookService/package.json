@@ -2,10 +2,11 @@
   "name": "bookservice",
   "version": "1.0.0",
   "description": "BookService MicroService",
-  "main": "src/index.mjs",
+  "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --experimental-json-modules src/index.mjs"
+    "start": "nodemon --experimental-json-modules src/index.js"
   },
   "author": "Ahmed Ayachi",
   "license": "ISC",
