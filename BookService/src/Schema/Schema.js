@@ -1,4 +1,4 @@
-import {GraphQLObjectType,GraphQLSchema,GraphQLID} from "graphql";
+import {GraphQLObjectType,GraphQLSchema,GraphQLID,GraphQLList} from "graphql";
 import {BookType,AuthorType} from "./Types/index.js";
 import {authors, books} from "./Data/index.js";
 
@@ -20,6 +20,14 @@ export default new GraphQLSchema({
                     id:{type:GraphQLID},
                 },
                 resolve:(parent,args)=>authors.find(author=>author.id===args.id),
+            },
+            books:{
+                type:new GraphQLList(BookType),
+                resolve:()=>books,
+            },
+            authors:{
+                type:new GraphQLList(AuthorType),
+                resolve:()=>authors,
             },
         },
     }),
