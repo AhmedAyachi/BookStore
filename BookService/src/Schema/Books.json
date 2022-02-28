@@ -1,0 +1,17 @@
+[
+    {
+        "id":"1",
+        "name":"name of the wind",
+        "genre":"fantasy"
+    },
+    {
+        "id":"2",
+        "name":"the final empire",
+        "genre":"fantasy"
+    },
+    {
+        "id":"3",
+        "name":"the long earth",
+        "genre":"sci-fi"
+    }
+]
