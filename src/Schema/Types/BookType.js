@@ -1,8 +1,7 @@
 import {GraphQLObject} from "qlboost";
 import {GraphQLString,GraphQLID} from "graphql";
 import AuthorType from "./AuthorType.js";
-//import {authors} from "../Data/index.js";
-import {Author} from "../../Models/index.js";
+import * as data from "../../Data/index.js";
 
 
 export default GraphQLObject({
@@ -14,7 +13,10 @@ export default GraphQLObject({
         {
             name:"author",
             type:AuthorType,
-            resolve:(book)=>Author.findOne({id:book.authorId}),
+            resolve:(book)=>{
+                const {authorId}=book;
+                return data.authors.find(author=>author.id===authorId);
+            },
         },
     ],
 });

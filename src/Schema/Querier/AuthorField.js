@@ -1,6 +1,6 @@
 import {GraphQLID} from "graphql";
 import {AuthorType} from "../Types/index.js";
-import {Author} from "../../Models/index.js";
+import * as data from "../../Data/index.js";
 
 
 export default {
@@ -9,5 +9,8 @@ export default {
     args:{
         id:{type:GraphQLID},
     },
-    resolve:(parent,args)=>Author.findOne({id:args.id}),
+    resolve:(parent,args)=>{
+        const {id}=args;
+        return data.authors.find(author=>author.id===id);
+    },
 }

@@ -1,6 +1,6 @@
 import {GraphQLString,GraphQLID,GraphQLNonNull} from "graphql";
 import {BookType} from "../Types/index.js";
-import {Book,Author} from "../../Models/index.js";
+import * as data from "../../Data/index.js";
 import {capitalize} from "../../Resources/index.js";
 
 
@@ -10,11 +10,11 @@ export default {
     args:{
         name:{
             type:new GraphQLNonNull(GraphQLString),
-            resolve:async (value)=>{
+            resolve:(value)=>{
                 value=value.trim();
                 if(value){
                     const name=capitalize(value.toLowerCase());
-                    const exists=Boolean(await Book.findOne({name}));
+                    const exists=data.books.some(book=>book.name===name);
                     if(exists) throw new Error("book already exists");
                     else return name;
                 }
@@ -31,16 +31,17 @@ export default {
         },
         authorId:{
             type:GraphQLID,
-            resolve:async (value)=>{
-                const exists=Boolean(await Author.findOne({id:value}));
+            resolve:(value)=>{
+                const exists=data.authors.some(author=>author.id===value);
                 if(exists) return value;
                 else throw new Error("no author with such id");
             },
         },
     },
-    resolve:async (parent,args)=>{
-        args.id=(await Book.count())+1;
-        const book=new Book(args);
-        return book.save();
+    resolve:(parent,args)=>{
+        const {books}=data;
+        args.id=String(books.length+1);
+        books.push(args);
+        return args;
     },
 }

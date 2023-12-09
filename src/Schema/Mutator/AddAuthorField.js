@@ -1,7 +1,7 @@
 import {GraphQLDate} from "qlboost";
 import {GraphQLString,GraphQLNonNull} from "graphql";
 import {AuthorType} from "../Types/index.js";
-import {Author} from "../../Models/index.js";
+import * as data from "../../Data/index.js";
 import {capitalize} from "../../Resources/index.js";
 
 
@@ -12,11 +12,11 @@ export default {
         {
             name:"name",
             type:new GraphQLNonNull(GraphQLString),
-            resolve:async (value)=>{
+            resolve:(value)=>{
                 value=value.trim();
                 if(value){
                     const name=capitalize(value.toLowerCase());
-                    const exists=Boolean(await Author.findOne({name}));
+                    const exists=data.authors.some(author=>author.name===name);
                     if(exists) throw new Error("author already exists");
                     else return name;
                 }
@@ -33,8 +33,10 @@ export default {
         }),
     ],
     resolve:async (parent,args)=>{
-        args.id=(await Author.count())+1;
-        const author=new Author(args);
-        return author.save();
+        const {authors}=data;
+        args.id=String(authors.length+1);
+        args.books=[];
+        authors.push(args);
+        return args;
     },
 }
