@@ -1,16 +1,12 @@
 {
   "name": "bookservice",
   "version": "1.0.0",
+  "type": "module",
   "description": "BookService MicroService",
   "main": "src/index.js",
-  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --experimental-json-modules src/index.js",
-    "database": "mongod -f /opt/homebrew/etc/mongod.conf"
+    "start": "nodemon --experimental-json-modules src/index.js"
   },
-  "author": "Ahmed Ayachi",
-  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.2",
     "express": "^4.17.3",
@@ -19,7 +15,6 @@
     "mongoose": "^6.2.3",
     "qlboost": "^1.0.1"
   },
-  "exports": {
-    "./models": "./src/Models/index.js"
-  }
+  "author": "Ahmed Ayachi",
+  "license": "MIT"
 }
