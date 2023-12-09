@@ -1,15 +1,22 @@
-import {GraphQLObjectType,GraphQLString,GraphQLID,GraphQLInt,GraphQLList} from "graphql";
+import {GraphQLObject,GraphQLDate} from "qlboost";
+import {GraphQLString,GraphQLID,GraphQLList} from "graphql";
 import BookType from "./BookType.js";
 //import {books} from "../Data/index.js";
-import {Book,Author} from "../../Models/index.js";
+import {Book} from "../../Models/index.js";
 
 
-export default new GraphQLObjectType({
+export default GraphQLObject({
     name:"Author",
     fields:()=>({
         id:{type:GraphQLID},
         name:{type:GraphQLString},
-        age:{type:GraphQLInt},
+        birthdate:GraphQLDate({
+            key:"birthdate",
+            format:"dmy",
+            srcFormat:"dmy",
+            seperator:"/",
+            prettify:true,
+        }),
         books:{
             type:new GraphQLList(BookType),
             resolve:(author)=>{

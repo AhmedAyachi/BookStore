@@ -1,0 +1,17 @@
+[
+    {
+        "id":"1",
+        "name":"Patrick Rothfuss",
+        "birthdate":"6/6/1973"
+    },
+    {
+        "id":"2",
+        "name":"Brandon Sanderson",
+        "birthdate":"19/12/1975"
+    },
+    {
+        "id":"3",
+        "name":"Terry Pratchett",
+        "birthdate":"28/4/1948"
+    }
+]

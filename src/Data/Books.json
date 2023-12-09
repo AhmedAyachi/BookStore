@@ -1,37 +1,37 @@
 [
     {
         "id":"1",
-        "name":"name of the wind",
+        "name":"Name Of The Wind",
         "genre":"fantasy",
         "authorId":"1"
     },
     {
         "id":"2",
-        "name":"the final empire",
+        "name":"The Final Empire",
         "genre":"fantasy",
         "authorId":"2"
     },
     {
         "id":"3",
-        "name":"the long earth",
+        "name":"The Long Earth",
         "genre":"sci-fi",
         "authorId":"3"
     },
     {
         "id":"4",
-        "name":"the hero of ages",
+        "name":"The Hero Of Ages",
         "genre":"fantasy",
         "authorId":"2"
     },
     {
         "id":"5",
-        "name":"the colour of magic",
+        "name":"The Colour Of Magic",
         "genre":"fantasy",
         "authorId":"3"
     },
     {
         "id":"6",
-        "name":"the light fantastic",
+        "name":"The Light Fantastic",
         "genre":"fantasy",
         "authorId":"3"
     }

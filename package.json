@@ -10,15 +10,16 @@
     "database": "mongod -f /opt/homebrew/etc/mongod.conf"
   },
   "author": "Ahmed Ayachi",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.2",
     "express": "^4.17.3",
     "express-graphql": "^0.12.0",
     "graphql": "^15.8.0",
-    "mongoose": "^6.2.3"
+    "mongoose": "^6.2.3",
+    "qlboost": "^1.0.1"
   },
-  "exports":{
-    "./models":"./src/Models/index.js"
+  "exports": {
+    "./models": "./src/Models/index.js"
   }
 }
